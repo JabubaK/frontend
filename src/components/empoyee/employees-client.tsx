@@ -39,14 +39,20 @@ export default function EmployeeClient() {
   const columns = [
     { header: "First Name", accessor: "firstName" as keyof Employee },
     { header: "Last Name", accessor: "lastName" as keyof Employee },
-    { header: "Age", accessor: "age" as keyof Employee },
+    {
+      header: "Age",
+      accessor: "age" as keyof Employee,
+      render: (employee: Employee) => `${employee.age} years`, // Aquí se agrega el sufijo "years"
+    },
     { header: "Sex", accessor: "sex" as keyof Employee },
     {
       header: "Actions",
-      accessor: 'actions',
+      accessor: "actions",
       render: (employee: Employee) => (
         <Link to={`/employees/${employee.id}`}>
-          <button className="border border-solid border-black border-opacity-20 hover:bg-slate-100 p-2 rounded"><Eye className="h-4 w-4"/></button>
+          <button className="border border-solid border-black border-opacity-20 hover:bg-slate-100 p-2 rounded">
+            <Eye className="h-4 w-4" />
+          </button>
         </Link>
       ),
     },
@@ -64,7 +70,6 @@ export default function EmployeeClient() {
           <span className="hidden md:inline mr-2">Add Employee</span>
         </Link>
       </div>
-      <hr className="w-full" />
       <DataTable columns={columns} data={employees} />
     </>
   );

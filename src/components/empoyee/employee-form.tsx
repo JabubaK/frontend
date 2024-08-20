@@ -65,55 +65,34 @@ export default function EmployeeForm({ employee }: EmployeeFormProps) {
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="grid gap-6 mb-6 md:grid-cols-2">
         <div>
-          <label className="block mb-2 text-sm font-medium text-gray-900 ">
-            First Name
-          </label>
+          <label className="block mb-2 text-sm font-medium text-gray-900 ">First Name</label>
           <input
-            className="border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 "
+          className="border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 "
             {...register("firstName", { required: "First name is required" })}
           />
-          {errors.firstName && (
-            <span className="text-red-400 text-sm font-semibold">
-              {errors.firstName.message}
-            </span>
-          )}
+          {errors.firstName && <span className="text-red-400 text-sm font-semibold">{errors.firstName.message}</span>}
         </div>
         <div>
-          <label className="block mb-2 text-sm font-medium text-gray-900 ">
-            Last Name
-          </label>
+          <label className="block mb-2 text-sm font-medium text-gray-900 ">Last Name</label>
           <input
-            className="border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 "
+          className="border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 "
             {...register("lastName", { required: "Last name is required" })}
           />
-          {errors.lastName && (
-            <span className="text-red-400 text-sm font-semibold">
-              {errors.lastName.message}
-            </span>
-          )}
+          {errors.lastName && <span className="text-red-400 text-sm font-semibold">{errors.lastName.message}</span>}
         </div>
         <div>
-          <label className="block mb-2 text-sm font-medium text-gray-900 ">
-            Age
-          </label>
+          <label className="block mb-2 text-sm font-medium text-gray-900 ">Age</label>
           <input
-            className="border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 "
+          className="border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 "
             {...register("age", { required: true, min: 18, max: 100 })}
           />
-          {errors.age && (
-            <span className="text-red-400 text-sm font-semibold">
-              Age must be a number between 18 and 100
-            </span>
-          )}
+          {errors.age && <span className="text-red-400 text-sm font-semibold">Age must be a number between 18 and 100</span>}
         </div>
         <div>
-          <label className="block mb-2 text-sm font-medium text-gray-900 ">
-            Sex
-          </label>
+          <label className="block mb-2 text-sm font-medium text-gray-900 ">Sex</label>
           <select
-            className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
-            {...register("sex", { required: true })}
-          >
+          className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
+          {...register("sex", { required: true })}>
             <option value="M">Male</option>
             <option value="F">Female</option>
           </select>
@@ -121,16 +100,10 @@ export default function EmployeeForm({ employee }: EmployeeFormProps) {
         </div>
       </div>
 
-      {employee ? (
-        <></>
-      ) : (
-        <button
-          type="submit"
-          className="flex items-center bg-black text-white rounded-md px-4 py-2"
-        >
-          Add Employee
-        </button>
-      )}
+    
+      <button type="submit" className="flex items-center bg-black text-white rounded-md px-4 py-2">
+        {employee ? "Update Employee" : "Add Employee"}
+      </button>
     </form>
   );
 }
